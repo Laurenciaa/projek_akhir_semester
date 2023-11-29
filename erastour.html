@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eras Tour</title>
+    <style>
+         * {
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+        }
+
+        .running-text-box {
+            position: fixed;
+            left: 0px;
+            top: 0px;
+            height: 80px;
+            width: 200vw;
+            /* background-color: grey; */
+            display: flex;
+            align-items: center;
+            margin-top: -25px;
+        }
+
+        .running-text-box > p {
+            /* background-color: white; */
+            color: black;
+            font-family: Arial, Helvetica, sans-serif;
+            padding: 0px 5px;
+            font-size: 18pt;
+            position: relative;
+            animation: runningText 7s infinite;
+            animation-timing-function: linear;
+        }
+
+        @keyframes runningText {
+            from {
+                left: 0px;
+            }
+            to {
+                left: 1000px;
+            }
+        }
+
+        div {
+            font-size: 100px;
+            text-align: center;
+            font-family: Arial, Helvetica, sans-serif;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="running-text-box">
+        <p>Coming Soon, Please Wait.</p>
+    </div>
+
+    <div>
+        <span id="hour"></span>:
+        <span id="minute"></span>:
+        <span id="second"></span>
+    </div>
+    <script>
+        let timer = 10800;
+        const hourText = document.getElementById("hour");
+        const minuteText = document.getElementById("minute");
+        const secondText = document.getElementById("second");
+
+        function showTimer(timer){
+            const hour = Math.floor(timer / 3600);
+            const minute = Math.floor((timer % 3600) / 60);
+            const second = timer % 60;
+
+        hourText.innerHTML = hour.toString().padStart(2, "0");
+        minuteText.innerHTML = minute.toString().padStart(2, "0");
+        secondText.innerHTML = second.toString().padStart(2, "0");}
+
+        showTimer(timer);
+        setInterval(function(){
+            timer--;
+            showTimer(timer);
+        }, 1000);
+    </script>
+    <img src="erastour.png" alt="">
+</body>
+</html>
